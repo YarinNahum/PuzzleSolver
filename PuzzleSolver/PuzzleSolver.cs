@@ -8,10 +8,11 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
+app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+
+app.Run("http://localhost:8000");
