@@ -22,6 +22,7 @@ namespace PuzzleSolverService.PuzzleStates
             State = initialState;
         }
 
+        #region IEquatable
         /// <summary>
         /// Get a hash code regarding all the values in the State.
         /// </summary>
@@ -84,10 +85,32 @@ namespace PuzzleSolverService.PuzzleStates
             return GetHashCode() == other.GetHashCode();
         }
 
+        #endregion IEquatable
+
         /// <summary>
         /// Get all the possible legal moves from the current board <see cref="State"/>.
         /// </summary>
         /// <returns>an enumerable of all possible moves from the current <see cref="State"/></returns>
-        public abstract IEnumerable<BoardState<T>> GetPossiblesMoves();
+        public abstract IEnumerable<BoardState<T>> GetPossibleMoves();
+
+        /// <summary>
+        /// Find the first occurence of a value in the board.
+        /// </summary>
+        /// <param name="value">The value to find</param>
+        /// <returns>a tuple of row and col of the first occurence of the <paramref name="value"/>. (-1,-1) if not found.</returns>
+        public (int row, int col) FindPositionofValueInBoard(T value)
+        {
+            for (int i = 0; i < State.GetLength(0); i++)
+            {
+                for (int j = 0; j < State.GetLength(1); j++)
+                {
+                    if (State[i][j].Equals(value))
+                    {
+                        return (i, j);
+                    }
+                }
+            }
+            return (-1, -1); // Value not found in matrix
+        }
     }
 }
