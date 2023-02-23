@@ -2,3 +2,5 @@
 \obj
 \bin
 launchSettings.json
+.editorconfig
+example.json
