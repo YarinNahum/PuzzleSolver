@@ -1,18 +1,32 @@
-var builder = WebApplication.CreateBuilder(args);
+using PuzzleSolverService;
+using System;
 
-// Add services to the container.
+namespace PuzzleSolver
+{
+    public class PuzzleSolver
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+            // Add services to the container.
 
-var app = builder.Build();
+            builder.Services.AddControllers();
+                    builder.Services.AddSingleton<IPuzzleSolverService>(new PuzzleSolverService.PuzzleSolverService());
 
-// Configure the HTTP request pipeline.
+            var app = builder.Build();
 
-app.UseRouting();
+            // Configure the HTTP request pipeline.
 
-app.UseAuthorization();
+            app.UseRouting();
 
-app.MapControllers();
+            app.UseAuthorization();
 
+            app.MapControllers();
 
-app.Run("http://localhost:8000");
+            app.Run("http://localhost:8000");
+
+        }
+
+    }
+}
