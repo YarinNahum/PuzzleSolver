@@ -4,3 +4,4 @@
 launchSettings.json
 .editorconfig
 example.json
+*.csproj.user
