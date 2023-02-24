@@ -12,7 +12,7 @@ namespace PuzzleSolverService.Puzzles
         public SlidingPuzzle(BoardState<int> initialBoardState) : base(initialBoardState)
         {
             Name = "Sliding Puzzle";
-            TargetBoardState = CreateTargetBoardState(initialBoardState.State.GetLength(0), initialBoardState.State.GetLength(1));
+            TargetBoardState = CreateTargetBoardState(initialBoardState.State.Length, initialBoardState.State[0].Length);
         }
 
         /// <summary>
@@ -27,10 +27,10 @@ namespace PuzzleSolverService.Puzzles
             int count = 1;
 
             // fill the board with values 1...N*M
-            for (int i = 1; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 targetBoard[i] = new int[M];
-                for (int j = 1; j < M; j++)
+                for (int j = 0; j < M; j++)
                 {
                     targetBoard[i][j] = count;
                     count++;
