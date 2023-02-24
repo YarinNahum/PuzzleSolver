@@ -98,7 +98,7 @@ namespace PuzzleSolverService.PuzzleStates
         /// </summary>
         /// <param name="value">The value to find</param>
         /// <returns>a tuple of row and col of the first occurence of the <paramref name="value"/>. (-1,-1) if not found.</returns>
-        public (int row, int col) FindPositionofValueInBoard(T value)
+        protected (int row, int col) FindPositionofValueInBoard(T value)
         {
             for (int i = 0; i < State.GetLength(0); i++)
             {
