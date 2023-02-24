@@ -2,3 +2,6 @@
 \obj
 \bin
 launchSettings.json
+.editorconfig
+example.json
+*.csproj.user

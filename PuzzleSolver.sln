@@ -7,6 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PuzzleSolver", "PuzzleSolve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PuzzleSolverViewModels", "PuzzleSolverModels\PuzzleSolverViewModels.csproj", "{76B67835-ADCB-45FF-9BBA-2ED453AE13C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuzzleSolverService", "PuzzleSolverService\PuzzleSolverService.csproj", "{9A21C8EB-BC2C-4FCD-A8B8-5CF9AB1A80AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AB45853-7506-4FF2-91BD-FD71EE61BFFF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{76B67835-ADCB-45FF-9BBA-2ED453AE13C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76B67835-ADCB-45FF-9BBA-2ED453AE13C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76B67835-ADCB-45FF-9BBA-2ED453AE13C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A21C8EB-BC2C-4FCD-A8B8-5CF9AB1A80AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A21C8EB-BC2C-4FCD-A8B8-5CF9AB1A80AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A21C8EB-BC2C-4FCD-A8B8-5CF9AB1A80AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A21C8EB-BC2C-4FCD-A8B8-5CF9AB1A80AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
