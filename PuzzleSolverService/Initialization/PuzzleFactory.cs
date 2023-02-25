@@ -11,12 +11,12 @@ namespace PuzzleSolverService.Initialization
 {
     public class PuzzleFactory<T> where T : IEquatable<T>
     {
-        public static Puzzle<T> CreatePuzzle(PuzzleType type, BoardState<T> initialBoardState)
+        public static Puzzle<T> CreatePuzzle(PuzzleSolverInputViewModel initialBoardState)
         {
-            return type switch
+            return initialBoardState.PuzzleType switch
             {
-                PuzzleType.Sliding => new SlidingPuzzle(initialBoardState as BoardState<int>) as Puzzle<T>,
-                _ => throw new ArgumentException($"Unknown puzzle type: {type}")
+                PuzzleType.Sliding => new SlidingPuzzle(PuzzleStateFactory<int>.CreatePuzzleState(initialBoardState)) as Puzzle<T>,
+                _ => throw new ArgumentException($"Unknown puzzle type: {initialBoardState.PuzzleType}")
             };
         }
     }
