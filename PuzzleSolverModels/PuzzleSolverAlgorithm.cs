@@ -8,6 +8,7 @@ namespace PuzzleSolverViewModels
 {
     public enum PuzzleSolverAlgorithm
     {
+        Unknown,
         BFS,
         DFS
     }
