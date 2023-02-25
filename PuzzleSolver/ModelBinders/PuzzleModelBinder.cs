@@ -18,10 +18,16 @@ namespace PuzzleSolver.ModelBinders
             using (var reader = new StreamReader(requestBody))
             {
                 var json = reader.ReadToEndAsync().Result;
-
-                // Deserialize the JSON object
-                var puzzleSolverViewModel = JsonConvert.DeserializeObject<PuzzleSolverInputViewModel>(json);
-
+                PuzzleSolverInputViewModel? puzzleSolverViewModel = new PuzzleSolverInputViewModel();
+                try
+                {
+                    // Deserialize the JSON object
+                    puzzleSolverViewModel = JsonConvert.DeserializeObject<PuzzleSolverInputViewModel>(json);
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine(ex.Message);
+                }
                 // Set the result of the model binding
                 bindingContext.Result = ModelBindingResult.Success(puzzleSolverViewModel);
             }

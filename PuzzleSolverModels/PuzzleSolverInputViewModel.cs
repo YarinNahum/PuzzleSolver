@@ -9,7 +9,7 @@ namespace PuzzleSolverViewModels
         [Required]
         public PuzzleSolverAlgorithm PuzzleSolverAlgorithm { get; set; }
         [Required]
-        public int[][]? InitialBoardState { get; set; }
+        public int[,]? InitialBoardState { get; set; }
 
     }
 }
