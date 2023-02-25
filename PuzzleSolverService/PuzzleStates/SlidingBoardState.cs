@@ -9,7 +9,7 @@ namespace PuzzleSolverService.PuzzleStates
     public class SlidingBoardState : BoardState<int>
     {
 
-        public SlidingBoardState(int[][] initialState) : base(initialState)
+        public SlidingBoardState(int[,] initialState) : base(initialState)
         {
         }
 
@@ -64,7 +64,7 @@ namespace PuzzleSolverService.PuzzleStates
         /// <returns></returns>
         private BoardState<int> GetNewBoardStateWithSwapping(int row, int col, int rowSwapping, int colSwapping)
         {
-            var newBoardState = State.Clone() as int[][];
+            var newBoardState = State.Clone() as int[,];
             Swap(newBoardState!, row, col, rowSwapping, colSwapping);
             return new SlidingBoardState(newBoardState!);
         }
@@ -77,9 +77,9 @@ namespace PuzzleSolverService.PuzzleStates
         /// <param name="col1"></param>
         /// <param name="row2"></param>
         /// <param name="col2"></param>
-        protected static void Swap(int[][] matrix, int row1, int col1, int row2, int col2)
+        protected static void Swap(int[,] matrix, int row1, int col1, int row2, int col2)
         {
-            (matrix[row2][col2], matrix[row1][col1]) = (matrix[row1][col1], matrix[row2][col2]);
+            (matrix[row2, col2], matrix[row1, col1]) = (matrix[row1, col1], matrix[row2, col2]);
         }
     }
 }

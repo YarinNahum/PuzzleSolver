@@ -15,9 +15,9 @@ namespace PuzzleSolverService.PuzzleStates
         /// <summary>
         /// The state of the board.
         /// </summary>
-        public T[][] State { get; private set; }
+        public T[,] State { get; private set; }
 
-        public BoardState(T[][] initialState)
+        public BoardState(T[,] initialState)
         {
             State = initialState;
         }
@@ -33,12 +33,9 @@ namespace PuzzleSolverService.PuzzleStates
             var hash = new HashCode();
 
             // Combine hash codes of all elements in the matrix
-            foreach (var row in State)
+            foreach (var val in State)
             {
-                foreach (var val in row)
-                {
-                    hash.Add(val.GetHashCode());
-                }
+                hash.Add(val.GetHashCode());
             }
 
             return hash.ToHashCode();
@@ -104,7 +101,7 @@ namespace PuzzleSolverService.PuzzleStates
             {
                 for (int j = 0; j < State.GetLength(1); j++)
                 {
-                    if (State[i][j].Equals(value))
+                    if (State[i, j].Equals(value))
                     {
                         return (i, j);
                     }
