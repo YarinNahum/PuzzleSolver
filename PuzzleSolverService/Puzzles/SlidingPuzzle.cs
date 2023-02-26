@@ -42,7 +42,7 @@ namespace PuzzleSolverService.Puzzles
                 possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row, col - 1));
             }
 
-            if (col < boardState.State.GetLength(1))
+            if (col < boardState.State.GetLength(1) - 1)
             {
                 possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row, col + 1));
             }
@@ -52,7 +52,7 @@ namespace PuzzleSolverService.Puzzles
                 possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row - 1, col));
             }
 
-            if (row < boardState.State.GetLength(0))
+            if (row < boardState.State.GetLength(0) - 1)
             {
                 possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row + 1, col));
             }
