@@ -19,8 +19,15 @@ namespace PuzzleSolver.Controllers
         [HttpGet("solve")]
         public IActionResult SolvePuzzle([FromBody][ModelBinder(BinderType = typeof(PuzzleModelBinder))] PuzzleSolverInputViewModel input)
         {
-            PuzzleSolverService.SolvePuzzle(input);
-            return Ok();
+            try
+            {
+                PuzzleSolverService.SolvePuzzle(input);
+                return Ok();
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }

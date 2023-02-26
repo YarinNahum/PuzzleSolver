@@ -1,4 +1,5 @@
-﻿using PuzzleSolverViewModels;
+﻿using PuzzleSolverService.InputValidation;
+using PuzzleSolverViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,15 @@ namespace PuzzleSolverService
 
         public void SolvePuzzle(PuzzleSolverInputViewModel puzzle)
         {
-
+            try
+            {
+                ValidatePuzzle.IsPuzzleValid(puzzle);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }
