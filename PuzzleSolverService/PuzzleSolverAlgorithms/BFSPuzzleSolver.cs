@@ -22,6 +22,8 @@ namespace PuzzleSolverService.PuzzleSolverAlgorithms
         /// <returns></returns>
         public IEnumerable<BoardState<T>> SolvePuzzle(IPuzzle<T> puzzle)
         {
+            // clear the Visited set.
+            Visited.Clear();
             // if the starting board is the same as the final board, return a list with the board as the only value.
             if (puzzle.InitialBoardState == puzzle.TargetBoardState)
             {
