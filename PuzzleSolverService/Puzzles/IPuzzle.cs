@@ -26,12 +26,6 @@ namespace PuzzleSolverService.Puzzles
         /// <param name="boardState">The board state</param>
         /// <returns>An enumerable of all possible board states.</returns>
         public IEnumerable<BoardState<T>> GetPossibleMoves(BoardState<T> boardState);
-        /// <summary>
-        /// Every puzzle should create it's own final board state <see cref="TargetBoardState"/>.
-        /// This funtion is called inside the constructor of <see cref="Puzzle{T}"/>
-        /// </summary>
-        /// <returns>A board state representing the final board state of the puzzle.</returns>
-        public BoardState<T> CreateTargetBoardState();
 
     }
 }
