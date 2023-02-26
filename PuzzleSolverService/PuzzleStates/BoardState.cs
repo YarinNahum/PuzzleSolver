@@ -10,7 +10,7 @@ namespace PuzzleSolverService.PuzzleStates
     /// The base class for a board state.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class BoardState<T> : IEquatable<BoardState<T>> where T : IEquatable<T>
+    public class BoardState<T> : IEquatable<BoardState<T>> where T : IEquatable<T>
     {
         /// <summary>
         /// The state of the board.
@@ -85,17 +85,11 @@ namespace PuzzleSolverService.PuzzleStates
         #endregion IEquatable
 
         /// <summary>
-        /// Get all the possible legal moves from the current board <see cref="State"/>.
-        /// </summary>
-        /// <returns>an enumerable of all possible moves from the current <see cref="State"/></returns>
-        public abstract IEnumerable<BoardState<T>> GetPossibleMoves();
-
-        /// <summary>
         /// Find the first occurence of a value in the board.
         /// </summary>
         /// <param name="value">The value to find</param>
         /// <returns>a tuple of row and col of the first occurence of the <paramref name="value"/>. (-1,-1) if not found.</returns>
-        protected (int row, int col) FindPositionofValueInBoard(T value)
+        public (int row, int col) FindPositionofValueInBoard(T value)
         {
             for (int i = 0; i < State.GetLength(0); i++)
             {
