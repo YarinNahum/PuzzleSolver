@@ -39,22 +39,22 @@ namespace PuzzleSolverService.Puzzles
 
             if (col > 0)
             {
-                possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row, col - 1));
+                possibleMoves.Add(GetNewBoardStateWithSwapping(boardState, row, col, row, col - 1));
             }
 
             if (col < boardState.State.GetLength(1) - 1)
             {
-                possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row, col + 1));
+                possibleMoves.Add(GetNewBoardStateWithSwapping(boardState, row, col, row, col + 1));
             }
 
             if (row > 0)
             {
-                possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row - 1, col));
+                possibleMoves.Add(GetNewBoardStateWithSwapping(boardState, row, col, row - 1, col));
             }
 
             if (row < boardState.State.GetLength(0) - 1)
             {
-                possibleMoves.Add(GetNewBoardStateWithSwapping(row, col, row + 1, col));
+                possibleMoves.Add(GetNewBoardStateWithSwapping(boardState, row, col, row + 1, col));
             }
 
             return possibleMoves;
