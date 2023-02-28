@@ -46,9 +46,9 @@ namespace PuzzleSolverService.Puzzles
         /// <param name="rowSwapping"></param>
         /// <param name="colSwapping"></param>
         /// <returns></returns>
-        protected BoardState<T> GetNewBoardStateWithSwapping(int row, int col, int rowSwapping, int colSwapping)
+        protected BoardState<T> GetNewBoardStateWithSwapping(BoardState<T> boardState,int row, int col, int rowSwapping, int colSwapping)
         {
-            var newBoardState = InitialBoardState.State!.Clone() as T[,];
+            var newBoardState = boardState.State!.Clone() as T[,];
             Swap(newBoardState!, row, col, rowSwapping, colSwapping);
             return new BoardState<T>(newBoardState!);
         }
