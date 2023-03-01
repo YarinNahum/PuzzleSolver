@@ -1,14 +1,16 @@
 ﻿using PuzzleSolverService.InputValidation;
 using PuzzleSolverViewModels;
+using PuzzleSolverService.Initialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PuzzleSolverService.PuzzleStates;
 
 namespace PuzzleSolverService
 {
-    public class PuzzleSolverService : IPuzzleSolverService
+    public class PuzzleSolverService<T> : IPuzzleSolverService<T> where T : IEquatable<T>
     {
 
         public PuzzleSolverService()
@@ -16,7 +18,7 @@ namespace PuzzleSolverService
 
         }
 
-        public void SolvePuzzle(PuzzleSolverInputViewModel puzzle)
+        public IEnumerable<T[][]> SolvePuzzle(PuzzleSolverInputViewModel model)
         {
             try
             {

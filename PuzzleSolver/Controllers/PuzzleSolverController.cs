@@ -7,11 +7,11 @@ namespace PuzzleSolver.Controllers
 {
     [ApiController]
     [Route("api/")]
-    public class PuzzleSolverController : Controller
+    public class PuzzleSolverController : ControllerBase
     {
-        private IPuzzleSolverService PuzzleSolverService { get;}
+        private IPuzzleSolverService<int> PuzzleSolverService { get;}
 
-        public PuzzleSolverController(IPuzzleSolverService puzzleSolverService)
+        public PuzzleSolverController(IPuzzleSolverService<int> puzzleSolverService)
         {
             PuzzleSolverService = puzzleSolverService;
         }
@@ -21,13 +21,19 @@ namespace PuzzleSolver.Controllers
         {
             try
             {
-                PuzzleSolverService.SolvePuzzle(input);
-                return Ok();
+                var states = PuzzleSolverService.SolvePuzzle(input);
+                return Ok(states);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
+        }
 
+        [HttpGet("test")]
+        public IActionResult test()
+        {
+            Console.WriteLine("tesing");
+            return Ok();
         }
     }
 }

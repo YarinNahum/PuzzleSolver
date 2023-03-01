@@ -10,8 +10,8 @@ namespace PuzzleSolver
 
             // Add services to the container.
 
+            builder.Services.AddScoped<IPuzzleSolverService<int>,PuzzleSolverService<int>>();
             builder.Services.AddControllers();
-                    builder.Services.AddSingleton<IPuzzleSolverService>(new PuzzleSolverService.PuzzleSolverService());
 
             var app = builder.Build();
 
@@ -22,7 +22,6 @@ namespace PuzzleSolver
             app.UseAuthorization();
 
             app.MapControllers();
-
             app.Run("http://localhost:8000");
 
         }
