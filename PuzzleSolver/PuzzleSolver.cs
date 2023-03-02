@@ -1,4 +1,6 @@
 using PuzzleSolverService;
+using DataBases;
+using Microsoft.EntityFrameworkCore;
 
 namespace PuzzleSolver
 {
@@ -12,6 +14,10 @@ namespace PuzzleSolver
 
             builder.Services.AddScoped<IPuzzleSolverService<int>,PuzzleSolverService<int>>();
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<PuzzleSolverDataContext<int>>(option =>
+            {
+                option.UseNpgsql(builder.Configuration.GetConnectionString("PuzzleSolverDB"));
+            });
 
             var app = builder.Build();
 

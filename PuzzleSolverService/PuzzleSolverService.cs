@@ -18,11 +18,15 @@ namespace PuzzleSolverService
 
         }
 
-        public IEnumerable<T[][]> SolvePuzzle(PuzzleSolverInputViewModel model)
+        public IEnumerable<T[,]> SolvePuzzle(PuzzleSolverInputViewModel model)
         {
             try
             {
-                ValidatePuzzle.IsPuzzleValid(puzzle);
+                ValidatePuzzle.IsPuzzleValid(model);
+                var puzzle = PuzzleFactory<T>.CreatePuzzle(model);
+                var x = PuzzleSolverAlgorithmFactory<T>.CreatePuzzleSolverAlgorithm(model.PuzzleSolverAlgorithm);
+                var li = x.SolvePuzzle(puzzle);
+                return li.Select(bs => bs.State).ToList();
             }
             catch (Exception ex)
             {

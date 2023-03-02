@@ -12,6 +12,6 @@ namespace PuzzleSolverService
         /// Solve the puzzle
         /// </summary>
         /// <param name="puzzle"></param>
-        public IEnumerable<T[][]> SolvePuzzle(PuzzleSolverInputViewModel puzzle);
+        public IEnumerable<T[,]> SolvePuzzle(PuzzleSolverInputViewModel puzzle);
     }
 }
