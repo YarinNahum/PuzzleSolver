@@ -1,4 +1,6 @@
 using PuzzleSolverService;
+using PuzzleSolver.Models;
+using Database;
 
 namespace PuzzleSolver
 {
@@ -11,8 +13,9 @@ namespace PuzzleSolver
             // Add services to the container.
 
             builder.Services.AddControllers();
-                    builder.Services.AddSingleton<IPuzzleSolverService>(new PuzzleSolverService.PuzzleSolverService());
-
+            builder.Services.Configure<MongodbModelSettings>(builder.Configuration.GetSection("MongoDbAccess"));
+            builder.Services.AddSingleton<IPuzzleSolverService<int>>(new PuzzleSolverService<int>());
+            builder.Services.AddScoped<IDataBaseService<int>, MongoDBService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
