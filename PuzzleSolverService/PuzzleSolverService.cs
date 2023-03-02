@@ -1,5 +1,6 @@
 ﻿using PuzzleSolverService.InputValidation;
 using PuzzleSolverViewModels;
+using PuzzleSolverService.Initialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverService
 {
-    public class PuzzleSolverService : IPuzzleSolverService
+    public class PuzzleSolverService<T> : IPuzzleSolverService<T> where T : IEquatable<T>
     {
 
         public PuzzleSolverService()
@@ -16,11 +17,14 @@ namespace PuzzleSolverService
 
         }
 
-        public void SolvePuzzle(PuzzleSolverInputViewModel puzzle)
+        public IEnumerable<T[,]> SolvePuzzle(PuzzleSolverInputViewModel input)
         {
             try
             {
-                ValidatePuzzle.IsPuzzleValid(puzzle);
+                ValidatePuzzle.IsPuzzleValid(input);
+                var solver = PuzzleSolverAlgorithmFactory<T>.CreatePuzzleSolverAlgorithm(input.PuzzleSolverAlgorithm);
+                var puzzle = PuzzleFactory<T>.CreatePuzzle(input);
+                return solver.SolvePuzzle(puzzle).Select(board => board.State);
             }
             catch (Exception ex)
             {
