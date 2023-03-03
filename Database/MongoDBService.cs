@@ -20,6 +20,11 @@ namespace Database
             PuzzleCollection = mongodDB.GetCollection<PuzzleModel<int>>(settings.Value.CollectionName);
         }
 
+        public MongoDBService(IMongoCollection<PuzzleModel<int>> puzzleCollection)
+        {
+            PuzzleCollection = puzzleCollection;
+        }
+
         public async Task<PuzzleModel<int>> GetPuzzleAsync(int id)
         {
             return await PuzzleCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
