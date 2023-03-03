@@ -16,7 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj" />
     <ProjectReference Include="..\PuzzleSolverModels\PuzzleSolverViewModels.csproj" />
+    <ProjectReference Include="..\PuzzleSolverService\PuzzleSolverService.csproj" />
+    <ProjectReference Include="..\PuzzleSolver\PuzzleSolver.csproj" />
   </ItemGroup>
 
 </Project>
